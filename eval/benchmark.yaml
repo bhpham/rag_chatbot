@@ -1,0 +1,164 @@
+# Everstorm RAG benchmark
+#
+# Each item is one question with the document it must be answered from and a
+# list of acceptable answer keys. An answer key matches if it appears in the
+# text after normalization (lowercase, collapsed whitespace, unified dashes).
+# Keys are alternatives: matching ANY one counts as a hit.
+#
+# `abstain: true` marks questions that are NOT answerable from the corpus.
+# They are excluded from retrieval recall and used only to measure whether the
+# model correctly declines instead of inventing an answer.
+#
+# Keep keys short and distinctive. Long keys break on PDF line wrapping.
+
+- id: ret-window
+  question: "How long do I have to return an item?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["30 days"]
+
+- id: ret-final-sale
+  question: "Can I return a final sale item?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["no return unless defective"]
+
+- id: ret-holiday
+  question: "If I buy a gift in December, when does the return period end?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["31 jan"]
+
+- id: ret-worn-fee
+  question: "What fee is charged for returning a heavily worn item?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["$15 handling fee"]
+
+- id: ret-warranty-len
+  question: "How long is the warranty on manufacturing defects?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["12 months", "one year"]
+
+- id: ret-warranty-photos
+  question: "How many photos must I upload for a warranty claim?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["3 photos"]
+
+- id: ret-gift
+  question: "If I return a gift, how am I refunded?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["store credit"]
+
+- id: ret-intl-cost
+  question: "How much does an international return label cost?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["$15-$25", "$15 - $25", "15-25"]
+
+- id: ret-inspection
+  question: "How long does inspection take once the warehouse receives my return?"
+  source: "Everstorm_Return_and_exchange_policy.pdf"
+  answer_keys: ["3 business days"]
+
+- id: pay-card-refund
+  question: "How long do card refunds take to post?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["5-7 banking days"]
+
+- id: pay-crypto-min
+  question: "What is the minimum order value to pay with crypto?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["$500"]
+
+- id: pay-card-storage
+  question: "Do you store my full card number?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["never store full card numbers"]
+
+- id: pay-split
+  question: "Can I split a payment across two cards?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["gift card"]
+
+- id: pay-tls
+  question: "What encryption does checkout use?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["tls 1.3"]
+
+- id: pay-tax-states
+  question: "In how many US states do you charge sales tax?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["42 us states"]
+
+- id: pay-klarna
+  question: "How long does a Klarna refund take?"
+  source: "Everstorm_Payment_refund_and_security.pdf"
+  answer_keys: ["2-5 days"]
+
+- id: ship-eu-transit
+  question: "How many business days does delivery to the EU take?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["5-8"]
+
+- id: ship-free-threshold
+  question: "What basket total qualifies for free US standard shipping?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["$75"]
+
+- id: ship-po-box
+  question: "Do you ship to PO boxes?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["no po boxes"]
+
+- id: ship-address-change
+  question: "How quickly must I contact you to change my delivery address?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["30 min"]
+
+- id: ship-holiday-cutoff
+  question: "What is the US standard shipping cut-off for Christmas delivery?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["13 dec"]
+
+- id: ship-trace
+  question: "After how many days with no tracking movement do you open a domestic carrier trace?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["7 days"]
+
+- id: ship-warehouses
+  question: "Where are your fulfilment centers?"
+  source: "Everstorm_Shipping_and_Delivery_Policy.pdf"
+  answer_keys: ["reno", "harrisburg", "rotterdam"]
+
+- id: size-tee-l
+  question: "What chest measurement is a size L unisex tee?"
+  source: "Everstorm_Product_sizing_and_care_guide.pdf"
+  answer_keys: ["44"]
+
+- id: size-merino-wash
+  question: "How should I wash a merino base layer?"
+  source: "Everstorm_Product_sizing_and_care_guide.pdf"
+  answer_keys: ["cold gentle", "wool-safe detergent"]
+
+- id: size-shoe-eu
+  question: "What EU shoe size matches a US men's 9?"
+  source: "Everstorm_Product_sizing_and_care_guide.pdf"
+  answer_keys: ["42"]
+
+- id: size-dwr
+  question: "How often should I re-spray the DWR coating?"
+  source: "Everstorm_Product_sizing_and_care_guide.pdf"
+  answer_keys: ["every 10 washes"]
+
+- id: size-paracord
+  question: "What length of paracord replaces a broken boot lace?"
+  source: "Everstorm_Product_sizing_and_care_guide.pdf"
+  answer_keys: ["63 in"]
+
+- id: abstain-price-match
+  question: "Do you offer price matching against competitors?"
+  abstain: true
+
+- id: abstain-ceo
+  question: "Who is the CEO of Everstorm Outfitters?"
+  abstain: true
+
+- id: abstain-store-hours
+  question: "What are the opening hours of your Denver retail store?"
+  abstain: true
